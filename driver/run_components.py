@@ -116,9 +116,8 @@ def transform_task(args):
         # The output file is hardcoded in preprocess-h2
         args.search_input = "output.sas"
     except subprocess.CalledProcessError as err:
-        if err.returncode != -signal.SIGXCPU:
-            returncodes.print_stderr(
-                f"Task transformation returned exit status {err.returncode}")
+        returncodes.print_stderr(
+            f"Task transformation returned exit status {err.returncode}")
         # If the task transformation failed, we proceed with the original task.
         return (err.returncode, True)
     else:
